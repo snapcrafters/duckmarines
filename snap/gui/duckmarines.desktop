@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Duck Marines
+Comment=Remake of ChuChu Rocket
+Exec=duckmarines
+Icon=${SNAP}/meta/gui/duckmarines.png
+Terminal=false
+Type=Application
+Categories=Game;Simulation;
+Keywords=game

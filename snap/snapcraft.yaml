@@ -1,0 +1,60 @@
+name: duckmarines
+version:  1.0c
+summary: Remake of ChuChu Rocket
+description: |
+ Duck Marines is a cross-platform free software PC remake of Sonic
+ Team's ChuChu Rocket.
+
+ Duck Marines attempts to recreate the magic from the local multiplayer
+ of ChuChu Rocket while adding new elements like mini games, a level
+ editor, colorful pixel art and more.
+
+grade: stable
+confinement: strict
+
+parts:
+  love0.10.2: 
+    source: https://bitbucket.org/rude/love/downloads/love_0.10.2ppa1_amd64.deb
+    plugin: dump
+    # Suitable stage-packages for LOVE 0.9.x and 0.10.x
+    stage-packages:
+      - libdevil1c2
+      - libfreetype6
+      - libgcc1
+      - libgl1-mesa-glx
+      - libluajit-5.1-2
+      - libmodplug1
+      - libmpg123-0
+      - libopenal1
+      - libphysfs1
+      - libsdl2-2.0-0
+      - libstdc++6
+      - libtheora0
+      - libvorbisfile3
+      - zlib1g
+
+  liblove0.10.2:
+    source: https://bitbucket.org/rude/love/downloads/liblove0_0.10.2ppa1_amd64.deb
+    plugin: dump
+    after:
+      - love0.10.2
+
+  duckmarines:
+    source: ./lovegame/
+    plugin: dump
+    after:
+      - desktop-glib-only
+      - love0.10.2
+      - liblove0.10.2
+
+apps:
+  duckmarines:
+    command: bin/desktop-launch $SNAP/usr/bin/love $SNAP/duckmarines-1.0c.love
+    plugs:
+      - gsettings
+      - network
+      - network-bind
+      - opengl
+      - pulseaudio
+      - screen-inhibit-control      
+      - x11
