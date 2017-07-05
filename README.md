@@ -4,10 +4,7 @@
   Duck Marines
 </h1>
 
-<p align="center"><b>This is the snap for Duck Marines</b>, <i>"an all-in-one voice
-and text chat for gamers that's free, secure, and works on both your desktop
-and phone"</i>. It works on Ubuntu, Fedora, Debian, and other major Linux
-distributions.</p>
+<p align="center"><b>This is the snap for Duck Marines</b>, <i>"a remake of ChuChu Rocket"</i>. It works on Ubuntu, Fedora, Debian, and other major Linux distributions.</p>
 
 <!--
 <p align="center">
@@ -28,7 +25,7 @@ distributions.</p>
 ## Remaining tasks
 
 Snapcrafters ([join us]()) are working to land snap install documentation and
-the [snapcraft.yaml](https://github.com/snapcrafters/discord/blob/master/snap/snapcraft.yaml)
+the [snapcraft.yaml](https://github.com/snapcrafters/duckmarines/blob/master/snap/snapcraft.yaml)
 upstream so Duck Marines can authoritatively publish future releases.
 
   - [x] Fork the [Snapcrafters template]() repository to your own GitHub account
@@ -41,17 +38,17 @@ upstream so Duck Marines can authoritatively publish future releases.
   - [x] Convert the snap to `strict` confinement, or `classic` confinement if it qualifies
   - [x] Publish the confined snap in the Snap store beta channel
   - [x] Update the install instructions in this `README.md`
-  - [ ] Post a call for testing on the [Snapcraft Forum](https://forum.snapcraft.io) - [link]()
+  - [x] Post a call for testing on the [Snapcraft Forum](https://forum.snapcraft.io) - [link](https://forum.snapcraft.io/t/call-for-testing-duck-marines-and-mr-rescue/1224)
   - [x] Request your GitHub repository is forked to the Snapcrafters organisation and configured for automated builds
   - [ ] Add the provided Snapcraft build badge to this `README.md`
-  - [x] Publish the snap in the Snap store stable channel
-  - [x] Update the install instructions in this `README.md`
+  - [ ] Publish the snap in the Snap store stable channel
+  - [ ] Update the install instructions in this `README.md`
   - [ ] Post an announcement in the [Snapcraft Forum](https://forum.snapcraft.io) - [link]()
   - [ ] Submit a pull request or patch upstream that adds snap install documentation - [link]()
-  - [ ] Submit a pull request or patch upstream that adds the `snapcraft.yaml` and any required assets/launchers - [link]()
+  - [ ] Submit a pull request or patch upstream that adds the `snapcraft.yaml` and any required assets/launchers - contacted via email
   - If upstream accept the PR:
     - [ ] Request upstream create a Snap store account
-    - [ ] Add upstream contact information to the `README.md`
+    - [x] Add upstream contact information to the `README.md`
     - [ ] Contact the Snap Advocacy team to request the snap be transferred to upstream
  - [ ] Ask the Snap Advocacy team to celebrate the snap - [link]()
 
@@ -63,10 +60,8 @@ If you have any questions, [post in the Snapcraft forum](https://forum.snapcraft
 | :---: |
 | [Martin Wimpress](https://github.com/flexiondotorg/) |
 
-<!--
 ## Upstream
 
-| [![Chris Marsh](http://gravatar.com/avatar/288010bc9def7b7a1c68f417583407e9?s=128)](https://github.com/crmarsh) |
+| [![Simon Larsen](https://avatars2.githubusercontent.com/u/295299?v=3&s=128)](https://github.com/SimonLarsen) |
 | :---: |
-| [Chris Marsh](https://github.com/crmarsh) |
--->
+| [Simon Larsen](https://github.com/SimonLarsen) |
