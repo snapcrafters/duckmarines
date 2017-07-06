@@ -6,11 +6,9 @@
 
 <p align="center"><b>This is the snap for Duck Marines</b>, <i>"a remake of ChuChu Rocket"</i>. It works on Ubuntu, Fedora, Debian, and other major Linux distributions.</p>
 
-<!--
 <p align="center">
 <a href="https://build.snapcraft.io/user/snapcrafters/duckmarines"><img src="https://build.snapcraft.io/badge/snapcrafters/duckmarines.svg" alt="Snap Status"></a>
 </p>
--->
 
 ## Install
 
