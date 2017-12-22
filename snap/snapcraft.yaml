@@ -13,7 +13,7 @@ grade: stable
 confinement: strict
 
 parts:
-  love0.10.2: 
+  love0.10.2:
     source: https://bitbucket.org/rude/love/downloads/love_0.10.2ppa1_amd64.deb
     plugin: dump
     # Suitable stage-packages for LOVE 0.9.x and 0.10.x
@@ -56,5 +56,6 @@ apps:
       - network-bind
       - opengl
       - pulseaudio
-      - screen-inhibit-control      
+      - screen-inhibit-control
+      - wayland
       - x11
