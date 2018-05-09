@@ -1,5 +1,6 @@
 name: duckmarines
-version:  1.0c
+version: latest
+version-script: cat $SNAPCRAFT_STAGE/version
 summary: Remake of ChuChu Rocket
 description: |
  Duck Marines is a cross-platform free software PC remake of Sonic
@@ -14,8 +15,14 @@ confinement: strict
 
 parts:
   love0.10.2:
-    source: https://bitbucket.org/rude/love/downloads/love_0.10.2ppa1_amd64.deb
     plugin: dump
+    source:
+      - on amd64: https://bitbucket.org/rude/love/downloads/love_0.10.2ppa1_amd64.deb
+      - else:
+        - on i386: https://bitbucket.org/rude/love/downloads/love_0.10.2ppa1_i386.deb
+        - else:
+           - on armhf: https://bitbucket.org/rude/love/downloads/love_0.10.2ppa1_armhf.deb
+           - else fail
     # Suitable stage-packages for LOVE 0.9.x and 0.10.x
     stage-packages:
       - libdevil1c2
@@ -34,26 +41,48 @@ parts:
       - zlib1g
 
   liblove0.10.2:
-    source: https://bitbucket.org/rude/love/downloads/liblove0_0.10.2ppa1_amd64.deb
+    source:
+      - on amd64: https://bitbucket.org/rude/love/downloads/liblove0_0.10.2ppa1_amd64.deb
+      - else:
+        - on i386: https://bitbucket.org/rude/love/downloads/liblove0_0.10.2ppa1_i386.deb
+        - else:
+          - on armhf: source https://bitbucket.org/rude/love/downloads/liblove0_0.10.2ppa1_armhf.deb
+          - else fail
     plugin: dump
     after:
       - love0.10.2
 
   duckmarines:
-    source: ./lovegame/
-    plugin: dump
+    plugin: nil
+    override-build: |
+      snapcraftctl build
+      # Get the latest releases json
+      echo "Get GitHub releases..."
+      wget --quiet https://api.github.com/repos/SimonLarsen/duckmarines/releases/latest -O releases.json
+      # Get the version from the tag_name and the download URL.
+      VERSION=$(jq . releases.json | grep tag_name | cut -d'"' -f4 | sed s'/v//')
+      LOVE_URL=$(cat releases.json | jq -r ".assets[] | select(.name | test(\"love\")) | .browser_download_url")
+      echo "Downloading ${LOVE_URL}..."
+      wget --quiet "${LOVE_URL}" -O "${SNAPCRAFT_PART_INSTALL}/game.love"
+      rm -f releases.json 2>/dev/null
+      echo $VERSION > $SNAPCRAFT_STAGE/version
+    build-packages:
+      - jq
+      - sed
+      - wget
     after:
       - desktop-glib-only
-      - love0.10.2
       - liblove0.10.2
 
 apps:
   duckmarines:
-    command: bin/desktop-launch $SNAP/usr/bin/love $SNAP/duckmarines-1.0c.love
+    command: bin/desktop-launch $SNAP/usr/bin/love $SNAP/game.love
     plugs:
+      - desktop
       - gsettings
+      - home
+      - joystick
       - network
-      - network-bind
       - opengl
       - pulseaudio
       - screen-inhibit-control
