@@ -1,6 +1,5 @@
 name: duckmarines
-version: latest
-version-script: cat $SNAPCRAFT_STAGE/version
+adopt-info: duckmarines
 summary: Remake of ChuChu Rocket
 description: |
  Duck Marines is a cross-platform free software PC remake of Sonic
@@ -64,7 +63,7 @@ parts:
       echo "Downloading ${LOVE_URL}..."
       wget --quiet "${LOVE_URL}" -O "${SNAPCRAFT_PART_INSTALL}/game.love"
       rm -f releases.json 2>/dev/null
-      echo $VERSION > $SNAPCRAFT_STAGE/version
+      snapcraftctl set-version $VERSION
     build-packages:
       - jq
       - sed
